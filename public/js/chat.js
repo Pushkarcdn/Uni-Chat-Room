@@ -112,12 +112,6 @@ const insertMessage = (messageID, userId, userName, message, time) => {
 
     parent.scrollTop = parent.scrollHeight;
 
-    // Add the onClick event listener for the delete button
-    const deleteButton = document.getElementById(`delete-${messageID}`);
-    deleteButton.addEventListener('click', () => {
-        deleteMessage(messageID);
-    });
-
 }
 
 function formatDate(dateString) {
@@ -174,6 +168,14 @@ const loadOldMessages = async () => {
 
         insertMessage(message._id, message.userID, message.userName, message.message, time);
 
+    });
+
+    const parent = document.getElementById("parent");
+    parent.addEventListener('click', (event) => {
+        if (event.target.id.startsWith('delete-')) {
+            const messageID = event.target.id.split('-')[1];
+            deleteMessage(messageID);
+        }
     });
 
 }
