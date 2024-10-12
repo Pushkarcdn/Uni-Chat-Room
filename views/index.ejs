@@ -9,43 +9,41 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body class="p-4 sm:p-12 flex flex-col gap-6 w-full bg-gray-300 text-black h-screen">
+<body class="p-4 sm:p-6 flex flex-col gap-4 w-full bg-gray-300 text-black h-screen">
+
+    <div class="w-full flex flex-wrap items-center gap-3 ">
+
+        <div class="flex-grow flex justify-start text-lg font-medium">
+
+            Universal chat room.
+
+        </div>
+
+        <span class="hidden sm:block my-name cursor-pointer font-medium"></span>
+
+        <button
+            class="py-2.5 px-8 rounded-full bg-transparent border-2 border-gray-600 text-black hover:bg-black hover:text-white transition  hover:border-transparent font-medium text-sm"
+            onclick="rename()">
+            Rename
+        </button>
+
+    </div>
+
+    <div class="bg-black pt-[1.4px]"></div>
 
     <div class="w-full flex flex-col items-start gap-4 flex-grow overflow-y-scroll no-scrollbar" id="parent">
-
-        <!-- <div class="flex items-start gap-2.5">
-
-            <img class="w-8 h-8 rounded-full" src="/images/person.jpg" alt="Jese image">
-
-            <div
-                class="flex flex-col w-full max-w-[1000px] leading-1.5 p-4 border-gray-200 bg-white rounded-e-xl rounded-es-xl dark:bg-gray-700">
-
-                <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                    <span class="text-sm font-semibold text-gray-900 dark:text-white">Bonnie Green</span>
-                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">11:46</span>
-                </div>
-
-                <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
-                    That's awesome. I think our users will really appreciate the improvements.
-                </p>
-
-                <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
-
-            </div>
-
-        </div> -->
 
     </div>
 
     <form name="msgform" onsubmit="sendMessage(event)" class="w-full flex gap-4 mt-4">
 
         <input type="text" name="message" class="border-none py-3 px-5 rounded-2xl flex-grow bg-gray-100 outline-none"
-            placeholder="Type a message" />
+            required minlength="3" placeholder="Type a message" />
 
-        <button type="submit" class="px-10 rounded-2xl">
+        <button type="submit" class="px-3 sm:px-10 rounded-2xl send text-base flex justify-center items-center">
             <div class="svg-wrapper-1">
                 <div class="svg-wrapper">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="20">
                         <path fill="none" d="M0 0h24v24H0z"></path>
                         <path fill="currentColor"
                             d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z">
@@ -53,9 +51,8 @@
                     </svg>
                 </div>
             </div>
-            <span>Send</span>
+            <span class="hidden sm:block">Send</span>
         </button>
-
 
     </form>
 

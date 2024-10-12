@@ -10,9 +10,8 @@
 }
 
 /* From Uiverse.io by adamgiebl */ 
-button {
+button.send {
   font-family: inherit;
-  font-size: 20px;
   background: royalblue !important;
   color: white !important;
   padding-left: 0.9em;

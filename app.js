@@ -4,7 +4,7 @@ import { Server } from 'socket.io';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-const port = process.env.PORT || 3005; 
+const port = process.env.PORT || 3005;
 
 const app = express();
 const server = http.createServer(app);
@@ -22,15 +22,18 @@ app.get("/", (req, res) => {
 
 io.on("connection", (socket) => {
 
-    console.log("A user connected");
+    const userName = socket.handshake.query.userName;
+
+    console.log(userName, " connected");
 
     socket.on("disconnect", () => {
         console.log("A user disconnected");
     });
 
-    socket.on("message", (msg) => {
-        console.log(msg)
-        io.emit("message", msg);
+    socket.on("message", (userID, userName, message) => {
+
+        io.emit("message", userID, userName, message);
+
     });
 
 })
