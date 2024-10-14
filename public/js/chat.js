@@ -57,7 +57,7 @@ const deleteMessage = async (messageID) => {
 
     socket.emit("delete", messageID);
 
-    const message = document.getElementById(messageID).remove();
+    document.getElementById(messageID).remove();
 
 }
 
@@ -162,13 +162,18 @@ const loadOldMessages = async () => {
 
     const messages = await response.json();
 
-    messages.forEach(message => {
+    if(messages){
 
-        let time = formatDate(message.createdAt);
+        document.getElementById("parent").innerHTML = "";
 
-        insertMessage(message._id, message.userID, message.userName, message.message, time);
+        messages.forEach(message => {
 
-    });
+            let time = formatDate(message.createdAt);
+    
+            insertMessage(message._id, message.userID, message.userName, message.message, time);
+    
+        });
+    }
 
     const parent = document.getElementById("parent");
     parent.addEventListener('click', (event) => {
